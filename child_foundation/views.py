@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Views
 def index(request):
@@ -17,7 +18,6 @@ def login(request):
         if user is not None:
             # If user exists on our system
             auth.login(request, user)
-            print('auth was successful')
             return redirect('entryform')
         else:
             print('Invalid credentials')
@@ -52,9 +52,12 @@ def register(request):
     else:
         return render(request, 'register.html')
 
-def entryform(request):
-    return render(request, 'entryform.html')
 
 def logout(request):
     auth.logout(request)
     return redirect('login')
+
+
+@login_required(login_url='/login/')
+def entryform(request):
+    return render(request, 'entryform.html')
