@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Child Foundation</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+  </head>
+
+  <body>
+    <ul>
+      <li style="float:left"><a class="active" href="#"><strong>David Child Foundation</strong></a></li>
+      <li><a href="{% url 'login' %}">Login</a></li>
+    </ul>
+    <style>
+      .error-message {
+        color:red;
+      }
+    </style>
+    <div class="testbox">
+      <form method="POST" action="">
+        {% csrf_token %}
+        {% for message in messages %}
+        <div class="error-message">
+          <h4>{{message}}</h4>
+        </div>
+        {% endfor %}
+        <h1><center>Sign Up</center></h1></br>
+        <div class="title-block">
+          <select>
+            <option value="title" selected>Title</option>
+            <option value="miss">Miss</option>
+            <option value="mrs">Mrs</option>
+            <option value="mr">Mr</option>
+          </select>
+          <input class="name" type="text" name="firstname" placeholder="First name" required/>
+          <input class="name" type="text" name="lastname" placeholder="Last name" required/>
+        </div>
+        <h4>Email Address<span>*</span></h4>
+        <input type="email" name="email" />
+        <!-- <h4>Contact Number<span>*</span></h4>
+        <input type="text" name="phone"/> -->
+        <h4>Password<span>*</span></h4>
+        <input type="password" name="password" required/>
+	      <h4>Confirm Password<span>*</span></h4>
+        <input type="password" name="password2" required/>
+        <div class="btn-block">
+          <button type="submit">Register</button>
+        </div>
+      </form>
+    </div>
+  </body>

@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Child Foundation</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+  </head>
+  <body>
+    <ul>
+      <!-- <li><a class="active" href="#home">Home</a></li> -->
+      <li style="float:left"><a class="active" href="#"><strong>David Child Foundation</strong></a></li>
+      <li><a href="{% url 'login' %}">Login</a></li>
+    </ul>
+    <style>
+      .error-message {
+        color:red;
+      }
+    </style>
+    <div class="testbox">
+      <form method="POST" action="">
+        {% csrf_token %}
+        {% for message in messages %}
+        <div class="error-message">
+          <h4>{{message}}</h4>
+        </div>
+        {% endfor %}
+        <h1><center>Login</center></h1></br>
+        <h4>Email Address<span>*</span></h4>
+        <input type="text" name="email" required/>
+        <h4>Password<span>*</span></h4>
+        <input type="password" name="password" required/>
+        <div class="btn-block">
+          <button type="submit">Login</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
