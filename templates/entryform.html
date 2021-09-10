@@ -19,45 +19,57 @@
       {% endif %}
     </ul>
 
+    <style>
+      .error-message {
+        color:red;
+      }
+    </style>
+
     <div class="testbox">
-      <form action="/">
+      {% csrf_token %}
+      {% for message in messages %}
+      <div class="error-message">
+        <h4>{{message}}</h4>
+      </div>
+      {% endfor %}
+      <form method="POST" action="">
         <h1><strong>David Child Foundation</strong></h1>
         <div class="row">
           <!-- First Column -->
           <div class="column" >
             <h4>Code</h4>
-            <input type="text" name="name"/>
+            <input type="text" name="code"/>
             <h4>First Name<span>*</span></h4>
-            <input type="text" name="name"/>
+            <input type="text" name="firstname"/>
             <h4>Why Assist</h4>
-            <input type="text" name="name"/>
+            <input type="text" name="whyassist"/>
             <h4>Gender<span>*</span></h4>
             <select>
               <option value="M">M</option>
               <option value="F">F</option>
             </select>
             <h4>Father's Name</h4>
-            <input type="text" name="name"/>
+            <input type="text" name="fathersname"/>
             <h4>Mothers Name</h4>
-            <input type="text" name="name"/>
+            <input type="text" name="mothersname"/>
             <h4>Brothers</h4>
-            <input type="text" name="name"/>
+            <input type="text" name="brothers"/>
             <h4>Guardian</h4>
-            <input type="text" name="name"/>
+            <input type="text" name="guardian"/>
             <h4>Home Location</h4>
-            <input type="text" name="name"/>
+            <input type="text" name="homelocation"/>
             <h4>Grade</h4>
-            <input type="text" name="name"/>
+            <input type="text" name="grade"/>
             <h4>Picture</h4>
-            <input type="file" name="name"/>
+            <input type="file" name="picture"/>
           </div>
 
           <!-- Second Column -->
           <div class="column">
             <h4>Date of Birth</h4>
-            <input type="date" name="name"/>
+            <input type="date" name="dob"/>
             <h4>Last Name</h4>
-            <input type="text" name="name"/>
+            <input type="text" name="lastname"/>
             <h4>Priority<span>*</span></h4>
               <select>
                 <option value=""></option>
@@ -67,25 +79,25 @@
                 <option value="4">4</option>
               </select>
             <h4>Family Religiion</h4>
-            <input type="text" name="name"/>
+            <input type="text" name="religion"/>
             <h4>Father's Occupation</h4>
-            <input type="text" name="name"/>
+            <input type="text" name="fathersoccupation"/>
             <h4>Mother's Occupation</h4>
-            <input type="text" name="name"/>
+            <input type="text" name="mothersoccupation"/>
             <h4>Sisters</h4>
-            <input type="text" name="name"/>
+            <input type="text" name="sisters"/>
             <h4>Guardian's Occupation</h4>
-            <input type="text" name="name"/>
+            <input type="text" name="guardiansname"/>
             <h4>Home Type</h4>
-            <input type="text" name="name"/>
+            <input type="text" name="hometype"/>
             <h4>Favorites</h4>
-            <input type="text" name="name"/>
+            <input type="text" name="favorites"/>
             <h4>Date Commence</h4>
-            <input type="date" name="name"/>
+            <input type="date" name="datecommence"/>
           </div>
         </div>
         <div class="btn-block">
-          <button type="submit" href="/">Submit</button>
+          <button type="submit">Submit</button>
         </div>
       </form>
     </div>

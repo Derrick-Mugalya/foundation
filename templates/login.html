@@ -13,11 +13,13 @@
       <li style="float:left"><a class="active" href="#"><strong>David Child Foundation</strong></a></li>
       <li><a href="{% url 'login' %}">Login</a></li>
     </ul>
+
     <style>
       .error-message {
         color:red;
       }
     </style>
+    
     <div class="testbox">
       <form method="POST" action="">
         {% csrf_token %}
