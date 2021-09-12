@@ -86,7 +86,6 @@ def entryform(request):
         favorites = request.POST['favorites']
         picture = request.POST['picture']
         datecommence = request.POST['datecommence']
-        print('past this state')
 
         # check if email code in db
         if Entryform.objects.filter(code=code).exists():
@@ -94,7 +93,6 @@ def entryform(request):
             messages.info(request, 'Child already exists or crosscheck the code entered')
             return redirect('entryform')
         else:
-            print("attempting to save")
             entryform = Entryform.objects.create(
                 owner=owner, 
                 code=code, dob=dob, 
