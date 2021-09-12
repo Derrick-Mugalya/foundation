@@ -23,16 +23,25 @@
       .error-message {
         color:red;
       }
+      .success-message {
+        color: rgb(16, 114, 16);
+      }
     </style>
 
     <div class="testbox">
-      {% csrf_token %}
-      {% for message in messages %}
-      <div class="error-message">
-        <h4>{{message}}</h4>
-      </div>
-      {% endfor %}
       <form method="POST" action="">
+        {% csrf_token %}
+        {% for message in messages %}
+          {% if message == 'Record saved successfully' %}
+            <div class="success-message">
+              <h4>{{message}}</h4>
+            </div>
+          {% else %}
+            <div class="error-message">
+              <h4>{{message}}</h4>
+            </div>
+          {% endif %}
+        {% endfor %}
         <h1><strong>David Child Foundation</strong></h1>
         <div class="row">
           <!-- First Column -->
@@ -40,11 +49,11 @@
             <h4>Code</h4>
             <input type="text" name="code"/>
             <h4>First Name<span>*</span></h4>
-            <input type="text" name="firstname"/>
-            <h4>Why Assist</h4>
-            <input type="text" name="whyassist"/>
+            <input type="text" name="firstname" required/>
+            <h4>Why Assist<span>*</span></h4>
+            <input type="text" name="whyassist" required/>
             <h4>Gender<span>*</span></h4>
-            <select>
+            <select name="gender">
               <option value="M">M</option>
               <option value="F">F</option>
             </select>
@@ -56,30 +65,30 @@
             <input type="text" name="brothers"/>
             <h4>Guardian</h4>
             <input type="text" name="guardian"/>
-            <h4>Home Location</h4>
+            <h4>Home Location<span>*</span></h4>
             <input type="text" name="homelocation"/>
-            <h4>Grade</h4>
-            <input type="text" name="grade"/>
+            <h4>Grade<span>*</span></h4>
+            <input type="text" name="grade" required/>
             <h4>Picture</h4>
             <input type="file" name="picture"/>
           </div>
 
           <!-- Second Column -->
           <div class="column">
-            <h4>Date of Birth</h4>
-            <input type="date" name="dob"/>
-            <h4>Last Name</h4>
-            <input type="text" name="lastname"/>
+            <h4>Date of Birth<span>*</span></h4>
+            <input type="date" name="dob" required/>
+            <h4>Last Name<span>*</span></h4>
+            <input type="text" name="lastname" required/>
             <h4>Priority<span>*</span></h4>
-              <select>
+              <select name="priority">
                 <option value=""></option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
               </select>
-            <h4>Family Religiion</h4>
-            <input type="text" name="religion"/>
+            <h4>Family Religiion<span>*</span></h4>
+            <input type="text" name="religion" required/>
             <h4>Father's Occupation</h4>
             <input type="text" name="fathersoccupation"/>
             <h4>Mother's Occupation</h4>
@@ -87,13 +96,13 @@
             <h4>Sisters</h4>
             <input type="text" name="sisters"/>
             <h4>Guardian's Occupation</h4>
-            <input type="text" name="guardiansname"/>
+            <input type="text" name="guardiansoccupation"/>
             <h4>Home Type</h4>
             <input type="text" name="hometype"/>
-            <h4>Favorites</h4>
-            <input type="text" name="favorites"/>
-            <h4>Date Commence</h4>
-            <input type="date" name="datecommence"/>
+            <h4>Favorites<span>*</span></h4>
+            <input type="text" name="favorites" required/>
+            <h4>Date Commence<span>*</span></h4>
+            <input type="date" name="datecommence" required/>
           </div>
         </div>
         <div class="btn-block">
@@ -102,5 +111,4 @@
       </form>
     </div>
   </body>
-
 </html>

@@ -14,7 +14,7 @@ class Entryform(models.Model):
     lastname = models.CharField(max_length=100)
     whyassist = models.CharField(max_length=100)
     priority = models.CharField(max_length=100)
-    Gender = models.CharField(max_length=100)
+    gender = models.CharField(max_length=100)
     religion = models.CharField(max_length=100)
     fathersname = models.CharField(max_length=100)
     fathersoccupation = models.CharField(max_length=100)
